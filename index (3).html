@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Legacy — Protege tu patrimonio digital</title>
+  <meta name="description" content="Tu patrimonio digital existe — en cripto, en contenido, en tu marca. Digital Legacy Enterprise lo organiza, protege y transmite." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0B1628; color: #F0F4FF; line-height: 1.5; }
+    .w { max-width: 680px; margin: 0 auto; padding: 0 1.25rem; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.08); position: sticky; top: 0; background: #0B1628; z-index: 100; }
+    .logo { font-size: 15px; font-weight: 600; color: #1D9E75; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; cursor: pointer; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero { position: relative; padding: 5rem 0 4rem; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=85&auto=format&fit=crop') center/cover no-repeat; opacity: 0.22; z-index: 0; }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.07em; padding: 4px 14px; border-radius: 20px; background: rgba(29,158,117,0.15); color: #1D9E75; border: 0.5px solid rgba(29,158,117,0.3); margin-bottom: 1.5rem; }
+    .hero h1 { font-size: 34px; font-weight: 500; line-height: 1.25; margin-bottom: 1rem; color: #fff; }
+    .hero h1 em { font-style: normal; color: #1D9E75; }
+    .hero p { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8; }
+    .btn-primary { padding: 14px 36px; background: #1D9E75; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+    .btn-primary:hover { background: #179065; }
+
+    .divider { height: 0.5px; background: rgba(255,255,255,0.08); }
+    .sec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; color: #1D9E75; margin-bottom: 0.75rem; }
+    .sec-title { font-size: 22px; font-weight: 500; margin-bottom: 0.5rem; line-height: 1.3; color: #fff; }
+    .sec-sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 2rem; }
+
+    .historias { padding: 3.5rem 0; }
+    .scroll-hint { font-size: 12px; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+    .cards-track { display: flex; gap: 1rem; overflow-x: auto; padding: 0.25rem 0 1.25rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; cursor: grab; }
+    .cards-track:active { cursor: grabbing; }
+    .cards-track::-webkit-scrollbar { height: 3px; }
+    .cards-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    .cards-track::-webkit-scrollbar-thumb { background: #1D9E75; border-radius: 2px; }
+    .historia-card { min-width: 270px; max-width: 270px; background: rgba(255,255,255,0.04); backdrop-filter: blur(12px); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 16px; overflow: hidden; scroll-snap-align: start; flex-shrink: 0; transition: border-color 0.2s; }
+    .historia-card:hover { border-color: rgba(29,158,117,0.4); }
+    .h-photo { width: 100%; height: 190px; object-fit: cover; display: block; }
+    .h-body { padding: 1.25rem; }
+    .h-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+    .h-role { font-size: 12px; color: #1D9E75; font-weight: 500; margin-bottom: 2px; }
+    .h-city { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+    .h-tension { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; padding-top: 10px; border-top: 0.5px solid rgba(255,255,255,0.08); }
+
+    .scanner-sec { padding: 3.5rem 0; }
+    .scanner-wrap { background: rgba(255,255,255,0.04); backdrop-filter: blur(12px); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; }
+    .intro-scan { text-align: center; padding: 1rem 0; }
+    .intro-scan h2 { font-size: 22px; font-weight: 500; color: #fff; margin-bottom: 0.75rem; }
+    .intro-scan p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; line-height: 1.7; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .prog-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-bottom: 2rem; }
+    .prog-fill { height: 100%; background: #1D9E75; border-radius: 2px; transition: width 0.3s; }
+    .q-num { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+    .q-text { font-size: 18px; font-weight: 500; margin-bottom: 0.5rem; line-height: 1.4; color: #fff; }
+    .q-hint { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 1.25rem; }
+    .opts { display: flex; flex-direction: column; gap: 8px; }
+    .opt { padding: 13px 16px; border: 0.5px solid rgba(255,255,255,0.1); border-radius: 8px; background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.8); font-size: 14px; cursor: pointer; text-align: left; transition: all 0.15s; display: flex; align-items: center; gap: 10px; }
+    .opt:hover { border-color: #1D9E75; background: rgba(29,158,117,0.08); }
+    .opt.sel { border: 1.5px solid #1D9E75; background: rgba(29,158,117,0.15); color: #fff; }
+    .opt-check { width: 16px; height: 16px; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 10px; }
+    .opt.sel .opt-check { background: #1D9E75; border-color: #1D9E75; }
+    .nav-btns { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
+    .btn-back { background: none; border: none; color: rgba(255,255,255,0.4); font-size: 13px; cursor: pointer; padding: 8px 0; }
+    .btn-next { padding: 12px 24px; background: #1D9E75; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; opacity: 0.35; pointer-events: none; transition: opacity 0.2s; }
+    .btn-next.ok { opacity: 1; pointer-events: all; }
+
+    /* RESULTADO */
+    .r-pill { display: inline-block; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; margin-bottom: 10px; }
+    .r-header { text-align: center; margin-bottom: 1.5rem; }
+    .r-title { font-size: 20px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+    .r-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; max-width: 420px; margin: 0 auto; }
+
+    /* CHARTS LAYOUT */
+    .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+    .chart-box { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem; }
+    .chart-title { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+    canvas { display: block; margin: 0 auto; }
+
+    /* BARRAS */
+    .bars-box { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+    .bar-row { margin-bottom: 1rem; }
+    .bar-row:last-child { margin-bottom: 0; }
+    .bar-label-row { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+    .bar-track { height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; }
+    .bar-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; width: 0%; }
+
+    .risks-title { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: rgba(255,255,255,0.4); margin: 1.25rem 0 10px; }
+    .risk-item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 8px; margin-bottom: 8px; background: rgba(255,255,255,0.03); }
+    .risk-ico { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+    .risk-txt { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.75); }
+
+    .r-service { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.25rem; margin: 1.25rem 0; }
+    .r-service-label { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+    .r-service-name { font-size: 16px; font-weight: 600; color: #1D9E75; margin-bottom: 4px; }
+    .r-service-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; }
+    .r-cta { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.25rem; }
+    .r-cta p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 1rem; line-height: 1.6; }
+    .btn-cta { padding: 13px 28px; background: #1D9E75; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; }
+    .btn-restart { background: none; border: none; color: rgba(255,255,255,0.35); font-size: 13px; cursor: pointer; margin-top: 1rem; display: block; margin-left: auto; margin-right: auto; }
+
+    /* SERVICIOS */
+    .servicios { padding: 3.5rem 0; }
+    .srv-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; margin-bottom: 2rem; }
+    .srv { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem; transition: border-color 0.2s; }
+    .srv:hover { border-color: rgba(255,255,255,0.15); }
+    .srv.feat { border-color: rgba(29,158,117,0.4); background: rgba(29,158,117,0.06); }
+    .srv-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+    .srv-profiles { font-size: 11px; color: #1D9E75; margin-bottom: 6px; }
+    .srv-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* MAPA SVG */
+    .map-box { background: rgba(255,255,255,0.04); border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; }
+    .map-title { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 0.5rem; }
+    .map-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 1.25rem; }
+    .map-svg { width: 100%; height: auto; }
+    .map-legend { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: rgba(255,255,255,0.55); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    .footer-sec { padding: 3.5rem 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .footer-form { display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem; }
+    .footer-form input { padding: 12px 14px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 8px; font-size: 14px; background: rgba(255,255,255,0.05); color: #fff; outline: none; transition: border-color 0.2s; }
+    .footer-form input:focus { border-color: #1D9E75; }
+    .footer-form input::placeholder { color: rgba(255,255,255,0.3); }
+    .footer-form button { padding: 13px; background: #1D9E75; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 500; cursor: pointer; }
+    .success-msg { display: none; text-align: center; padding: 1.5rem; color: #1D9E75; font-size: 15px; line-height: 1.7; }
+
+    .faq-sec { padding: 3.5rem 0; border-top: 0.5px solid rgba(255,255,255,0.08); }
+    .faq-item { border-bottom: 0.5px solid rgba(255,255,255,0.08); padding: 1rem 0; }
+    .faq-q { font-size: 14px; font-weight: 500; color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-icon { font-size: 18px; color: rgba(255,255,255,0.4); flex-shrink: 0; }
+    .faq-a { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-top: 0.75rem; display: none; }
+    .faq-a.open { display: block; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); text-align: center; padding: 2rem 0 1.5rem; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 26px; }
+      .srv-grid { grid-template-columns: 1fr; }
+      .charts-row { grid-template-columns: 1fr; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="w">
+  <nav>
+    <span class="logo">Digital Legacy</span>
+    <div class="nav-links">
+      <a onclick="document.getElementById('sec-scanner').scrollIntoView({behavior:'smooth'})">Mi perfil</a>
+      <a onclick="document.getElementById('sec-servicios').scrollIntoView({behavior:'smooth'})">Servicios</a>
+      <a onclick="document.getElementById('sec-contacto').scrollIntoView({behavior:'smooth'})">Contacto</a>
+    </div>
+  </nav>
+</div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content w">
+    <div class="hero-tag">Patrimonio digital · Legado · Protección</div>
+    <h1>Construiste algo que vale.<br><em>Digital o financiero.</em><br>¿Está protegido?</h1>
+    <p>Tu patrimonio digital existe — en cripto, en contenido, en tu marca, en tus activos online. La mayoría no sabe cuánto vale ni qué pasaría si no pudieras gestionarlo.</p>
+    <button class="btn-primary" onclick="document.getElementById('sec-scanner').scrollIntoView({behavior:'smooth'})">Descubre tu perfil →</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="historias">
+  <div class="w">
+    <div class="sec-label">TRES HISTORIAS</div>
+    <div class="sec-title">Puede pasarte en vida. No solo después.</div>
+    <div class="sec-sub">El patrimonio digital importa ahora — cuando quieres vender, expandirte o asegurarte de que lo que construiste llegue a quien tú decidas.</div>
+    <div class="scroll-hint">← Desliza para ver más →</div>
+    <div class="cards-track" id="track">
+      <div class="historia-card">
+        <img class="h-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=540https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=540&q=80&auto=format&fit=cropq=80https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=540&q=80&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=540&q=80&auto=format&fit=cropfit=crop" alt="Alfonso" loading="lazy" />
+        <div class="h-body">
+          <div class="h-name">Alfonso, 37 años</div>
+          <div class="h-role">Creador de contenido</div>
+          <div class="h-city">Madrid</div>
+          <div class="h-tension">380.000 suscriptores. Una marca le ofreció comprar su canal. Tres meses esperando porque no sabe cómo valorarlo ni cerrarlo legalmente.</div>
+        </div>
+      </div>
+      <div class="historia-card">
+        <img class="h-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=540https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=540&q=80&auto=format&fit=cropq=80https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=540&q=80&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1494790108377-be9c29b29330?w=540&q=80&auto=format&fit=cropfit=crop" alt="Elena" loading="lazy" />
+        <div class="h-body">
+          <div class="h-name">Elena, 29 años</div>
+          <div class="h-role">Escritora y académica</div>
+          <div class="h-city">Barcelona</div>
+          <div class="h-tension">Libro publicado, derechos en tres países, 12.000 lectores. Una editorial quiere licenciar su contenido. El contrato lleva semanas sin firma porque no sabe qué está cediendo.</div>
+        </div>
+      </div>
+      <div class="historia-card">
+        <img class="h-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=540https://images.unsplash.com/photo-1560250097-0b93528c311a?w=540&q=80&auto=format&fit=cropq=80https://images.unsplash.com/photo-1560250097-0b93528c311a?w=540&q=80&auto=format&fit=cropauto=formathttps://images.unsplash.com/photo-1560250097-0b93528c311a?w=540&q=80&auto=format&fit=cropfit=crop" alt="Andreas" loading="lazy" />
+        <div class="h-body">
+          <div class="h-name">Andreas, 51 años</div>
+          <div class="h-role">Ejecutivo</div>
+          <div class="h-city">Zürich</div>
+          <div class="h-tension">Activos en España, UK y Suiza. Fusión corporativa en marcha. Tres marcos legales distintos y ningún asesor que los coordine a la vez.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<section id="sec-scanner">
+  <div class="scanner-sec">
+    <div class="w">
+      <div class="sec-label">TU PERFIL DIGITAL</div>
+      <div class="sec-title">Descubre tu legado digital</div>
+      <div class="sec-sub">8 preguntas para clasificar tu perfil y conocer los puntos críticos de tu patrimonio.</div>
+      <div class="scanner-wrap">
+        <div id="s-intro">
+          <div class="intro-scan">
+            <h2>¿Cuánto vale lo que construiste?</h2>
+            <p>Sin registro. En 2 minutos recibes tu perfil, un análisis visual de tu exposición y los puntos que deberías resolver hoy.</p>
+            <button class="btn-primary" onclick="startScan()">Iniciar análisis</button>
+          </div>
+        </div>
+        <div id="s-q" style="display:none">
+          <div class="prog-bar"><div class="prog-fill" id="pfill"></div></div>
+          <div class="q-num" id="qnum"></div>
+          <div class="q-text" id="qtext"></div>
+          <div class="q-hint" id="qhint"></div>
+          <div class="opts" id="qopts"></div>
+          <div class="nav-btns">
+            <button class="btn-back" id="bbk" onclick="prevQ()">← Atrás</button>
+            <button class="btn-next" id="bnx" onclick="nextQ()">Siguiente →</button>
+          </div>
+        </div>
+        <div id="s-result" style="display:none">
+          <div class="r-header">
+            <div class="r-pill" id="rpill"></div>
+            <div class="r-title" id="rtitle"></div>
+            <div class="r-sub" id="rsub"></div>
+          </div>
+
+          <!-- CHARTS -->
+          <div class="charts-row" id="charts-row">
+            <div class="chart-box">
+              <div class="chart-title">ANÁLISIS DE EXPOSICIÓN</div>
+              <canvas id="radarChart" width="180" height="180"></canvas>
+            </div>
+            <div class="chart-box">
+              <div class="chart-title">DIMENSIONES DE RIESGO</div>
+              <div id="bars-container"></div>
+            </div>
+          </div>
+
+          <div class="risks-title" id="risks-title-el">LO QUE DEBERÍAS RESOLVER HOY</div>
+          <div id="rlist"></div>
+
+          <div class="r-service" id="rservice-wrap">
+            <div class="r-service-label">SERVICIO RECOMENDADO</div>
+            <div class="r-service-name" id="rservice-name"></div>
+            <div class="r-service-desc" id="rservice-desc"></div>
+          </div>
+          <div class="r-cta">
+            <p id="rcta-text"></p>
+            <button class="btn-cta" onclick="document.getElementById('sec-contacto').scrollIntoView({behavior:'smooth'})">Agenda una sesión →</button>
+            <button class="btn-restart" onclick="restartScan()">↺ Repetir análisis</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="sec-servicios">
+  <div class="servicios">
+    <div class="w">
+      <div class="sec-label">SERVICIOS</div>
+      <div class="sec-title">Cuatro niveles de protección</div>
+      <div class="sec-sub">El especialista te dirá cuál corresponde después de conocer tu situación.</div>
+      <div class="srv-grid">
+        <div class="srv">
+          <div class="srv-name">Audit</div>
+          <div class="srv-profiles">Todos los perfiles · Punto de entrada</div>
+          <div class="srv-desc">Diagnóstico integral. Identificación, valoración y plan de acción concreto. Pago único.</div>
+        </div>
+        <div class="srv feat">
+          <div class="srv-name">System</div>
+          <div class="srv-profiles">Creadores · Inversores</div>
+          <div class="srv-desc">Protección continua con monitoreo IA mensual y alertas regulatorias.</div>
+        </div>
+        <div class="srv">
+          <div class="srv-name">Elite</div>
+          <div class="srv-profiles">Emprendedores · Inversores avanzados</div>
+          <div class="srv-desc">Blindaje patrimonial multi-jurisdiccional con coordinación de especialistas.</div>
+        </div>
+        <div class="srv">
+          <div class="srv-name">Sovereign</div>
+          <div class="srv-profiles">Patrimonio multi-jurisdiccional</div>
+          <div class="srv-desc">Arquitectura patrimonial internacional y estructuras empresariales transferibles.</div>
+        </div>
+      </div>
+
+      <!-- MAPA -->
+      <div class="map-box" style="padding:0;overflow:hidden;border-radius:12px;position:relative">
+        <img src="https://i.imgur.com/pPYyJHP.jpeg" style="width:100%;display:block;border-radius:12px;opacity:0.9" alt="Mapa de cobertura Europa" />
+        <svg style="position:absolute;top:0;left:0;width:100%;height:100%" viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="gES" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1D9E75" stop-opacity="0.95"/><stop offset="40%" stop-color="#1D9E75" stop-opacity="0"/></radialGradient>
+            <radialGradient id="gUK" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#5BA3E8" stop-opacity="0.95"/><stop offset="40%" stop-color="#5BA3E8" stop-opacity="0"/></radialGradient>
+            <radialGradient id="gCH" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#E8B84B" stop-opacity="0.95"/><stop offset="40%" stop-color="#E8B84B" stop-opacity="0"/></radialGradient>
+          </defs>
+
+          <!-- Halos de luz -->
+          <ellipse cx="210" cy="272" rx="55" ry="42" fill="url(#gES)" opacity="0.55"/>
+          <ellipse cx="215" cy="135" rx="48" ry="37" fill="url(#gUK)" opacity="0.55"/>
+          <ellipse cx="338" cy="218" rx="42" ry="32" fill="url(#gCH)" opacity="0.60"/>
+
+          <!-- Líneas arqueadas brillantes -->
+          <path d="M210,272 Q148,160 215,135" fill="none" stroke="#1D9E75" stroke-width="2" opacity="0.8"/>
+          <path d="M210,272 Q295,208 338,218" fill="none" stroke="#1D9E75" stroke-width="2" opacity="0.8"/>
+          <path d="M215,135 Q312,105 338,218" fill="none" stroke="#5BA3E8" stroke-width="2" opacity="0.7"/>
+
+          <!-- Madrid -->
+          <circle cx="210" cy="272" r="14" fill="#1D9E75" opacity="0.12"/>
+          <circle cx="210" cy="272" r="7" fill="#1D9E75" opacity="0.4"/>
+          <circle cx="210" cy="272" r="3.5" fill="#1D9E75"/>
+          <circle cx="210" cy="272" r="2" fill="#fff" opacity="0.9"/>
+          <text x="226" y="275" fill="#1D9E75" font-size="12" font-weight="500" font-family="-apple-system,sans-serif">Madrid</text>
+
+          <!-- Londres -->
+          <circle cx="215" cy="135" r="14" fill="#5BA3E8" opacity="0.12"/>
+          <circle cx="215" cy="135" r="7" fill="#5BA3E8" opacity="0.4"/>
+          <circle cx="215" cy="135" r="3.5" fill="#5BA3E8"/>
+          <circle cx="215" cy="135" r="2" fill="#fff" opacity="0.9"/>
+          <text x="232" y="132" fill="#5BA3E8" font-size="12" font-weight="500" font-family="-apple-system,sans-serif">Londres</text>
+
+          <!-- Zürich -->
+          <circle cx="338" cy="218" r="14" fill="#E8B84B" opacity="0.12"/>
+          <circle cx="338" cy="218" r="7" fill="#E8B84B" opacity="0.4"/>
+          <circle cx="338" cy="218" r="3.5" fill="#E8B84B"/>
+          <circle cx="338" cy="218" r="2" fill="#fff" opacity="0.9"/>
+          <text x="354" y="216" fill="#E8B84B" font-size="12" font-weight="500" font-family="-apple-system,sans-serif">Zürich</text>
+        </svg>
+        <div style="padding:1rem 1.25rem 1.25rem">
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>España · Unión Europea</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#5BA3E8"></div>Reino Unido</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E8B84B"></div>Suiza</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="sec-contacto">
+  <div class="footer-sec">
+    <div class="w">
+      <div class="sec-label">CONTACTO</div>
+      <div class="sec-title">Agenda una sesión con un especialista</div>
+      <div class="sec-sub">Cuéntanos tu situación. Te contactamos en menos de 24 horas.</div>
+      <div class="footer-form" id="contact-form">
+        <input type="text" id="inp-name" placeholder="Tu nombre" />
+        <input type="email" id="inp-email" placeholder="tu@email.com" />
+        <input type="tel" id="inp-phone" placeholder="Teléfono (opcional)" />
+        <button onclick="submitForm()">Agendar sesión →</button>
+      </div>
+      <div class="success-msg" id="success-msg">✓ Recibido.<br>Te contactamos en menos de 24 horas.</div>
+    </div>
+  </div>
+</section>
+
+<section id="sec-faq">
+  <div class="faq-sec">
+    <div class="w">
+      <div class="sec-label">FAQ</div>
+      <div class="sec-title">Preguntas frecuentes</div>
+      <div id="faq-list"></div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-copy">© 2025 Digital Legacy Enterprise · Madrid, España</div>
+
+<script>
+// DRAG SCROLL
+const track = document.getElementById('track');
+let isDown = false, startX, scrollL;
+track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollL = track.scrollLeft; });
+document.addEventListener('mouseup', () => { isDown = false; });
+track.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; track.scrollLeft = scrollL - (x - startX) * 1.5; });
+
+const qs = [
+  { id:'activity', multi:true, t:'¿Cuál de estas describe tu situación?', hint:'Puedes seleccionar más de una', o:[
+    { label:'Tengo criptomonedas u otros activos en blockchain', scores:{P1:3,P4:1} },
+    { label:'Genero ingresos por contenido (YouTube, podcast, newsletter…)', scores:{P2:3} },
+    { label:'Tengo audiencia en redes sociales aunque no la monetice aún', scores:{P2:2} },
+    { label:'Tengo un negocio digital propio (e-commerce, SaaS, dominio…)', scores:{P3:3,P4:1} },
+    { label:'Soy asalariado / no tengo actividad digital relevante', scores:{} },
+    { label:'Combinación de varias', scores:{P1:1,P2:1,P3:1,P4:2} }
+  ]},
+  { id:'volume', multi:false, t:'¿El valor estimado de tus activos digitales supera los 50.000€?', hint:'Incluye cripto, canales, dominios, software, audiencia…', o:[
+    { label:'Sí, claramente', scores:{P4:3,P1:1,P3:1} },
+    { label:'Sí, aproximadamente', scores:{P4:2,P1:1,P3:1} },
+    { label:'No, pero podría llegar', scores:{P1:1,P3:1} },
+    { label:'No / no lo sé', scores:{} }
+  ]},
+  { id:'multi', multi:false, t:'¿Tienes activos o cuentas en más de un país?', hint:null, o:[
+    { label:'Sí, en 3 o más países', scores:{P4:4} },
+    { label:'Sí, en 2 países', scores:{P4:2} },
+    { label:'No, todo en un solo país', scores:{} }
+  ]},
+  { id:'crypto', multi:false, t:'¿Tienes criptomonedas o activos en blockchain?', hint:null, o:[
+    { label:'Sí, es parte importante de mi patrimonio', scores:{P1:3} },
+    { label:'Sí, como parte de mi portfolio', scores:{P1:2} },
+    { label:'Tengo algo pero poco', scores:{P1:1} },
+    { label:'No tengo', scores:{} }
+  ]},
+  { id:'content', multi:false, t:'¿Generas ingresos recurrentes por contenido o audiencia?', hint:null, o:[
+    { label:'Sí, es mi principal fuente de ingresos', scores:{P2:3} },
+    { label:'Sí, como ingreso complementario', scores:{P2:2} },
+    { label:'Tengo canales pero sin monetización activa', scores:{P2:1} },
+    { label:'No', scores:{} }
+  ]},
+  { id:'business', multi:false, t:'¿Tu negocio digital está formalizado?', hint:null, o:[
+    { label:'Sí, tengo empresa o sociedad constituida', scores:{P3:3} },
+    { label:'Opero como autónomo', scores:{P3:2} },
+    { label:'Aún no, pero lo estoy desarrollando', scores:{P3:1} },
+    { label:'No tengo negocio digital', scores:{} }
+  ]},
+  { id:'access', multi:false, t:'Si mañana no pudieras gestionar tus cuentas, ¿alguien sabría qué tienes y cómo acceder?', hint:null, o:[
+    { label:'Sí, tengo todo anotado y alguien lo sabe', scores:{} },
+    { label:'Más o menos, algo sabe', scores:{P1:1,P2:1,P3:1} },
+    { label:'No realmente', scores:{P1:2,P2:2,P3:2} },
+    { label:'No, nadie lo sabe', scores:{P1:3,P2:3,P3:3,P4:2} }
+  ]},
+  { id:'awareness', multi:false, t:'¿Conoces la regulación que aplica a tus activos digitales en tu país?', hint:null, o:[
+    { label:'Sí, la conozco bien', scores:{} },
+    { label:'La conozco parcialmente', scores:{P1:1,P3:1} },
+    { label:'Tengo dudas', scores:{P1:2,P3:2} },
+    { label:'No la conozco', scores:{P1:3,P2:2,P3:3,P4:2} }
+  ]}
+];
+
+let cur = 0, ans = {};
+
+function startScan() { document.getElementById('s-intro').style.display='none'; document.getElementById('s-q').style.display='block'; renderQ(); }
+function restartScan() { cur=0; ans={}; document.getElementById('s-result').style.display='none'; document.getElementById('s-intro').style.display='block'; }
+
+function renderQ() {
+  const q = qs[cur];
+  document.getElementById('qnum').textContent = 'Pregunta '+(cur+1)+' de '+qs.length;
+  document.getElementById('qtext').textContent = q.t;
+  document.getElementById('qhint').textContent = q.hint || '';
+  document.getElementById('pfill').style.width = (((cur+1)/qs.length)*100)+'%';
+  if (!ans[q.id]) ans[q.id] = [];
+  const c = document.getElementById('qopts'); c.innerHTML = '';
+  q.o.forEach((o,i) => {
+    const sel = ans[q.id].includes(i);
+    const b = document.createElement('button');
+    b.className = 'opt'+(sel?' sel':'');
+    b.innerHTML = '<span class="opt-check">'+(sel?'✓':'')+'</span>'+o.label;
+    b.onclick = () => toggleOpt(i);
+    c.appendChild(b);
+  });
+  const nx = document.getElementById('bnx');
+  nx.textContent = cur===qs.length-1?'Ver mi perfil →':'Siguiente →';
+  nx.classList.toggle('ok', ans[q.id].length>0);
+  document.getElementById('bbk').style.visibility = cur===0?'hidden':'visible';
+}
+
+function toggleOpt(i) {
+  const q = qs[cur];
+  if (!ans[q.id]) ans[q.id] = [];
+  if (q.multi) { const idx=ans[q.id].indexOf(i); if(idx>=0) ans[q.id].splice(idx,1); else ans[q.id].push(i); }
+  else { ans[q.id]=[i]; }
+  renderQ();
+}
+
+function nextQ() { if(!ans[qs[cur].id]||ans[qs[cur].id].length===0) return; if(cur<qs.length-1){cur++;renderQ();}else showResult(); }
+function prevQ() { if(cur>0){cur--;renderQ();} }
+
+function computeScores() {
+  const totals={P1:0,P2:0,P3:0,P4:0};
+  qs.forEach(q=>{(ans[q.id]||[]).forEach(i=>{Object.entries(q.o[i].scores).forEach(([p,v])=>{totals[p]+=v;});});});
+  return totals;
+}
+
+function computeDimensions() {
+  const get = id => (ans[id]||[])[0];
+  return {
+    legal: Math.min(100, (get('awareness')>=2?40:get('awareness')===1?20:0) + (get('business')<=1?30:0) + (get('multi')<=1?30:0)),
+    continuidad: Math.min(100, (get('access')>=2?(get('access')===3?80:50):get('access')===1?25:0) + (get('content')<=1?20:0)),
+    fiscal: Math.min(100, (get('crypto')<=1?40:0) + (get('volume')<=1?40:0) + (get('awareness')>=2?20:0)),
+    estructuracion: Math.min(100, (get('business')>=2?60:get('business')===1?30:0) + (get('multi')<=1?40:0))
+  };
+}
+
+const pd = {
+  P1:{name:'Inversor en activos digitales',bg:'rgba(29,158,117,0.2)',tc:'#1D9E75',sub:'Tu exposición a activos en blockchain requiere una estructura legal y fiscal clara para operar con seguridad y transferirlos cuando lo decidas.'},
+  P2:{name:'Creador de contenido digital',bg:'rgba(29,100,180,0.2)',tc:'#5BA3E8',sub:'Tu audiencia, tus canales y tu marca son un activo patrimonial real. Valorarlo y estructurarlo te abre opciones que hoy no tienes.'},
+  P3:{name:'Emprendedor digital',bg:'rgba(100,80,200,0.2)',tc:'#9D8EF0',sub:'Tu negocio digital necesita estructura para crecer, venderse o sobrevivir a cualquier imprevisto del fundador.'},
+  P4:{name:'Patrimonio multi-jurisdiccional',bg:'rgba(180,120,20,0.2)',tc:'#E8B84B',sub:'Tu nivel patrimonial y exposición internacional requiere una estrategia coordinada que ningún asesor generalista puede darte.'}
+};
+
+const services = {
+  P1:{name:'System',desc:'Protección continua de tus activos en blockchain con monitoreo mensual y alertas regulatorias.'},
+  P2:{name:'System',desc:'Protección continua de tu audiencia, canales y derechos de contenido.'},
+  P3:{name:'Elite',desc:'Blindaje patrimonial de tu negocio digital con coordinación legal y fiscal.'},
+  P4:{name:'Sovereign',desc:'Arquitectura patrimonial internacional coordinada en todas tus jurisdicciones.'},
+  empty:{name:'Audit',desc:'El punto de entrada para entender exactamente qué tienes y qué necesitas.'}
+};
+
+const risks = {
+  P1:['Sin plan de acceso documentado para tus activos — cualquier imprevisto los hace irrecuperables','Exposición fiscal no declarada — el Modelo 721 obliga a declarar cripto desde 50.000€ en el exterior','Sin estructura legal que permita transferir o vender tus activos de forma ágil'],
+  P2:['Sin valoración formal de tu canal o audiencia — no puedes negociar una venta ni una inversión con datos reales','Derechos de contenido sin estructura jurídica clara en caso de licencia o adquisición','Sin plan de continuidad — si no puedes operar, tus ingresos se detienen'],
+  P3:['Sin due diligence digital preparada — un inversor o comprador pedirá esto y no puedes improvisar','Dominio y propiedad intelectual sin titular jurídico claro en caso de expansión','Sin protocolo de continuidad — tu negocio depende de ti y solo de ti'],
+  P4:['Marcos legales distintos sin coordinación — cada decisión tiene consecuencias en los otros países','Riesgo de doble tributación por ausencia de planificación fiscal internacional','Sin estructura que centralice y proteja tu patrimonio digital global']
+};
+
+function drawRadar(dims) {
+  const canvas = document.getElementById('radarChart');
+  const ctx = canvas.getContext('2d');
+  const cx=90, cy=90, r=65;
+  const labels=['Legal','Continuidad','Fiscal','Estructura'];
+  const values=[dims.legal, dims.continuidad, dims.fiscal, dims.estructuracion].map(v=>v/100);
+  const angles=labels.map((_,i)=>(-Math.PI/2)+(2*Math.PI/4)*i);
+
+  ctx.clearRect(0,0,180,180);
+
+  // Grid
+  [0.25,0.5,0.75,1].forEach(scale=>{
+    ctx.beginPath();
+    angles.forEach((a,i)=>{
+      const x=cx+Math.cos(a)*r*scale, y=cy+Math.sin(a)*r*scale;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.closePath();
+    ctx.strokeStyle='rgba(255,255,255,0.08)';
+    ctx.lineWidth=1;
+    ctx.stroke();
+  });
+
+  // Axes
+  angles.forEach(a=>{
+    ctx.beginPath();
+    ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+Math.cos(a)*r, cy+Math.sin(a)*r);
+    ctx.strokeStyle='rgba(255,255,255,0.1)';
+    ctx.lineWidth=1;
+    ctx.stroke();
+  });
+
+  // Data
+  ctx.beginPath();
+  angles.forEach((a,i)=>{
+    const x=cx+Math.cos(a)*r*values[i], y=cy+Math.sin(a)*r*values[i];
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  });
+  ctx.closePath();
+  ctx.fillStyle='rgba(226,75,74,0.25)';
+  ctx.fill();
+  ctx.strokeStyle='#E24B4A';
+  ctx.lineWidth=2;
+  ctx.stroke();
+
+  // Points
+  angles.forEach((a,i)=>{
+    const x=cx+Math.cos(a)*r*values[i], y=cy+Math.sin(a)*r*values[i];
+    ctx.beginPath();
+    ctx.arc(x,y,3,0,Math.PI*2);
+    ctx.fillStyle='#E24B4A';
+    ctx.fill();
+  });
+
+  // Labels
+  ctx.fillStyle='rgba(255,255,255,0.6)';
+  ctx.font='9px -apple-system, sans-serif';
+  ctx.textAlign='center';
+  const labelR = r+14;
+  labels.forEach((l,i)=>{
+    const a=angles[i];
+    ctx.fillText(l, cx+Math.cos(a)*labelR, cy+Math.sin(a)*labelR+3);
+  });
+}
+
+function renderBars(dims) {
+  const container = document.getElementById('bars-container');
+  const items = [
+    { label:'Exposición legal', value:dims.legal, color:'#E24B4A' },
+    { label:'Continuidad', value:dims.continuidad, color:'#EF9F27' },
+    { label:'Exposición fiscal', value:dims.fiscal, color:'#E24B4A' },
+    { label:'Estructuración', value:dims.estructuracion, color:'#EF9F27' }
+  ];
+  container.innerHTML = items.map(item=>`
+    <div class="bar-row">
+      <div class="bar-label-row"><span>${item.label}</span><span style="color:${item.color}">${item.value}%</span></div>
+      <div class="bar-track"><div class="bar-fill" style="background:${item.color}" data-w="${item.value}"></div></div>
+    </div>
+  `).join('');
+  setTimeout(()=>{
+    container.querySelectorAll('.bar-fill').forEach(b=>{ b.style.width=b.dataset.w+'%'; });
+  },100);
+}
+
+function showResult() {
+  document.getElementById('s-q').style.display='none';
+  document.getElementById('s-result').style.display='block';
+
+  const scores=computeScores();
+  const total=Object.values(scores).reduce((a,b)=>a+b,0);
+  const dims=computeDimensions();
+
+  if(total===0) {
+    document.getElementById('rpill').style.display='none';
+    document.getElementById('rtitle').textContent='Puede que tengas más patrimonio digital del que crees.';
+    document.getElementById('rsub').textContent='La mayoría subestima el valor de su actividad digital. Una conversación con un especialista te lo aclara en 30 minutos — sin compromiso.';
+    document.getElementById('charts-row').style.display='none';
+    document.getElementById('risks-title-el').style.display='none';
+    document.getElementById('rlist').style.display='none';
+    const sv=services.empty;
+    document.getElementById('rservice-name').textContent=sv.name;
+    document.getElementById('rservice-desc').textContent=sv.desc;
+    document.getElementById('rcta-text').textContent='Sin compromiso. El especialista evalúa tu situación y te dice si DLE puede aportarte valor.';
+    return;
+  }
+
+  const order=['P4','P1','P3','P2'];
+  const max=Math.max(...Object.values(scores));
+  const winner=order.find(p=>scores[p]===max);
+  const d=pd[winner];
+
+  document.getElementById('charts-row').style.display='grid';
+  document.getElementById('risks-title-el').style.display='block';
+  document.getElementById('rlist').style.display='block';
+
+  const pill=document.getElementById('rpill');
+  pill.style.display='inline-block';
+  pill.textContent=winner+' · '+d.name;
+  pill.style.background=d.bg; pill.style.color=d.tc;
+  document.getElementById('rtitle').textContent='Tu legado digital tiene valor.';
+  document.getElementById('rsub').textContent=d.sub;
+
+  drawRadar(dims);
+  renderBars(dims);
+
+  const list=document.getElementById('rlist'); list.innerHTML='';
+  risks[winner].forEach(t=>{
+    const d2=document.createElement('div'); d2.className='risk-item';
+    d2.innerHTML='<span class="risk-ico" style="color:#E24B4A">⚠</span><span class="risk-txt">'+t+'</span>';
+    list.appendChild(d2);
+  });
+
+  const sv=services[winner];
+  document.getElementById('rservice-name').textContent=sv.name;
+  document.getElementById('rservice-desc').textContent=sv.desc;
+  document.getElementById('rcta-text').textContent='Un especialista DLE revisa tu situación y te presenta un plan concreto para tu perfil.';
+  document.getElementById('sec-scanner').scrollIntoView({behavior:'smooth'});
+}
+
+function submitForm() {
+  const name=document.getElementById('inp-name').value.trim();
+  const email=document.getElementById('inp-email').value.trim();
+  if(!name||!email){alert('Por favor completa tu nombre y email.');return;}
+  document.getElementById('contact-form').style.display='none';
+  document.getElementById('success-msg').style.display='block';
+}
+
+const faqs=[
+  {q:'¿Necesito tener mucho patrimonio digital para necesitar esto?',a:'No. Si tienes ingresos digitales recurrentes, activos en blockchain, una marca personal o un negocio online, ya tienes un patrimonio que vale la pena proteger y estructurar.'},
+  {q:'¿En qué se diferencia DLE de un abogado o asesor fiscal?',a:'Un abogado o asesor fiscal entiende su disciplina, no el ecosistema digital completo. DLE coordina especialistas técnicos, legales y fiscales en cada jurisdicción desde un único punto. El cliente no gestiona proveedores ni complejidad.'},
+  {q:'¿Puedo contratar DLE solo para una operación concreta?',a:'Sí. El Audit está diseñado para eso: diagnosticar tu situación, valorar tus activos y darte un plan de acción concreto — ya sea una venta, un contrato o una expansión.'},
+  {q:'¿Operáis fuera de España?',a:'Sí. DLE opera en España, Unión Europea, Reino Unido y Suiza, con red de especialistas locales en cada jurisdicción.'}
+];
+
+const fl=document.getElementById('faq-list');
+faqs.forEach((f,i)=>{
+  const d=document.createElement('div'); d.className='faq-item';
+  d.innerHTML='<div class="faq-q" onclick="tFaq('+i+')">'+f.q+'<span class="faq-icon" id="fi'+i+'">+</span></div><div class="faq-a" id="fa'+i+'">'+f.a+'</div>';
+  fl.appendChild(d);
+});
+
+function tFaq(i){
+  const a=document.getElementById('fa'+i),ico=document.getElementById('fi'+i);
+  const open=a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+  document.querySelectorAll('[id^="fi"]').forEach(x=>x.textContent='+');
+  if(!open){a.classList.add('open');ico.textContent='−';}
+}
+</script>
+</body>
+</html>
